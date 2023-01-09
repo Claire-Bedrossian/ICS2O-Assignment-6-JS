@@ -25,7 +25,7 @@ const getAdvice = async (URLAddress) => {
     const result = await fetch(URLAddress)
     const jsonData = await result.json()
 
-    advice = jsonData.slip.advice
+    let advice = jsonData.slip.advice
     console.log(advice)
 
     if (jsonData.slip.advice != "none") {
