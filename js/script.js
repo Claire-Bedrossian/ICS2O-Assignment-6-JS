@@ -25,7 +25,7 @@ const getAdvice = async (URLAddress) => {
     const result = await fetch(URLAddress)
     const jsonData = await result.json()
     console.log(jsonData.weather[0].icon)
-    
+
     advice = jsonData.slip.advice
     console.log(advice)
 
@@ -41,6 +41,4 @@ const getAdvice = async (URLAddress) => {
   }
 }
 
-getAdvice(
-  "https://api.adviceslip.com/advice"
-)
+getAdvice("https://api.adviceslip.com/advice")
