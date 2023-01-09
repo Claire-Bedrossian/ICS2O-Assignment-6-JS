@@ -1,23 +1,46 @@
 // Copyright (c) 202X Claire Bedrossian All rights reserved
 //
 // Created by: Claire Bedrossian
-// Created on: XXX 202X
+// Created on: Jan 2022
 // This file contains the JS functions for index.html
 
 "use strict"
 
 /**
- * Check servie worker.
+ * Check service worker.
  */
 if (navigator.serviceWorker) {
-  navigator.serviceWorker.register("/ICS2O-PWA-Test/sw.js", {
-    scope: "/ICS2O-PWA-Test/",
+  navigator.serviceWorker.register("/ICS2O-Assignment-6-JS/sw.js", {
+    scope: "/ICS2O-Assignment-6-JS/",
   })
 }
 
 /**
- * This function displays an alert.
+ * Get API info.
  */
-function myButtonClicked() {
-  document.getElementById("hello-world").innerHTML = "<p>Hello, World!</p>"
+// code from: https://www.youtube.com/watch?v=670f71LTWpM
+
+const getAdvice = async (URLAddress) => {
+  try {
+    const result = await fetch(URLAddress)
+    const jsonData = await result.json()
+    console.log(jsonData.weather[0].icon)
+    
+    advice = jsonData.slip.advice
+    console.log(advice)
+
+    if (jsonData.slip.advice != "none") {
+      document.getElementById("advice").innerHTML =
+        "<p>Your advice for the day is... " + advice + "</p>"
+    } else {
+      document.getElementById("advice").innerHTML =
+        "<p>Your advice for the day is... unknown</p>"
+    }
+  } catch (err) {
+    console.log(err)
+  }
 }
+
+getAdvice(
+  "https://api.adviceslip.com/advice"
+)
