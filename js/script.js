@@ -16,7 +16,7 @@ if (navigator.serviceWorker) {
 }
 
 /**
- * Get API info.
+ * Get API info to generate advice.
  */
 // code from: https://www.youtube.com/watch?v=670f71LTWpM
 
